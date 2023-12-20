@@ -6,7 +6,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 
 object ApiClient {
 
-    private const val BASE_URL = ""
+    private const val BASE_URL = "https://run.mocky.io/v3/"
 
     private val retrofit by lazy {
         Retrofit.Builder()
@@ -15,7 +15,5 @@ object ApiClient {
             .build()
     }
 
-//    fun getRegisterResult(): RegisterService = retrofit.create(RegisterService::class.java)
-//
-//    fun getLoginResult(): LoginService = retrofit.create(LoginService::class.java)
+    fun courseService(): CourseService = retrofit.create(CourseService::class.java)
 }

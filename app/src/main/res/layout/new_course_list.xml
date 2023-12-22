@@ -7,9 +7,12 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvNewCourses"
+        android:layout_marginTop="19dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
+        android:paddingHorizontal="20dp"
+        android:clipToPadding="false"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/new_course_item" />
 

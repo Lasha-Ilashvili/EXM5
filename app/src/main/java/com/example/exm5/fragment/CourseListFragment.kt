@@ -2,9 +2,7 @@ package com.example.exm5.fragment
 
 import android.widget.Toast
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
 import com.example.exm5.adapter.CourseListAdapter
 import com.example.exm5.base.BaseFragment
 import com.example.exm5.databinding.FragmentCourseListBinding
@@ -20,7 +18,6 @@ class CourseListFragment :
 
     override fun observe() {
         viewLifecycleOwner.lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
                 courseViewModel.courseResult.collect { result ->
                     when (result) {
                         is ResultResponse.Success -> {
@@ -38,7 +35,6 @@ class CourseListFragment :
                         }
                     }
                 }
-            }
         }
     }
 }

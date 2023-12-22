@@ -3,12 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp">
+    android:layout_marginStart="31dp"
+    android:layout_marginTop="54dp">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/sf_pro_display_regular"
         android:text="@string/courses_title"
-        android:textSize="24sp" />
+        android:textColor="@color/white"
+        android:textSize="42sp"
+        android:textStyle="bold" />
 
 </FrameLayout>

@@ -1,5 +1,6 @@
 package com.example.exm5.fragment
 
+import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -18,23 +19,30 @@ class CourseListFragment :
 
     override fun observe() {
         viewLifecycleOwner.lifecycleScope.launch {
-                courseViewModel.courseResult.collect { result ->
-                    when (result) {
-                        is ResultResponse.Success -> {
-                            binding.rvParent.adapter = CourseListAdapter().apply {
-                                setCourseData(result.course.allCourses)
-                            }
-                        }
+            courseViewModel.courseResult.collect { result ->
 
-                        is ResultResponse.Error -> {
-                            Toast.makeText(requireContext(), result.error, Toast.LENGTH_SHORT)
-                                .show()
-                        }
+                val progressBar = binding.progressBar
+                progressBar.visibility = View.VISIBLE
 
-                        else -> {
+                when (result) {
+                    is ResultResponse.Success -> {
+                        progressBar.visibility = View.GONE
+                        binding.rvParent.adapter = CourseListAdapter().apply {
+                            setCourseData(result.course.allCourses)
                         }
                     }
+
+                    is ResultResponse.Error -> {
+                        progressBar.visibility = View.GONE
+                        Toast.makeText(requireContext(), result.error, Toast.LENGTH_SHORT)
+                            .show()
+                    }
+
+                    else -> {
+                        progressBar.visibility = View.VISIBLE
+                    }
                 }
+            }
         }
     }
 }
